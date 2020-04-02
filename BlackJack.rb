@@ -101,7 +101,7 @@ while main_state == 1
             #deck.each { |suit, value| puts "#{suit}, #{value}" }
             2.times do
                player_hand = deck.map { |card| card.map{ |suit, value| puts "#{suit}, #{value}" } }
-            #   deck.shift
+               deck.shift
             end
             #player_hand.each { |suit, each| puts "#{suit}, #{value}" }
             puts ""

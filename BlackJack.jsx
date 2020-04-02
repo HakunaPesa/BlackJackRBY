@@ -1,4 +1,11 @@
-// Arrays //
+//\\---Requirements---//\\
+const prompt = require('prompt-sync')({sigint: true});
+const readline = require("readline").createInterface({
+   input: process.stdin,
+   output: process.stdout
+});
+
+//\\---Arrays---//\\
 let deck = [
    ["Hearts", "Ace"],
    ["Hearts", "2"],
@@ -57,7 +64,7 @@ let deck = [
 let playerHand = [];
 let compHand   = [];
 
-// States //
+//\\---States---//\\
 let mainState = 1;
 let gameState = 0;
 
@@ -66,6 +73,10 @@ const playQuestion = "Would you like to play?";
 const yesNo = "(Y)es / (N)o ";
 const yesNoExit = "(Y)es / (N)o / (E)xit";
 const invalidInput = "Error: invalid input.";
+
+//\\---Various Vars---//\\
+let willPlay = "";
+let askingQuestion = false;
 
 //\\---Functions---//\\
 const clearScreen = () => {
@@ -99,18 +110,29 @@ while (mainState == 1){
          console.log(playQuestion);
          console.log(yesNoExit);
 
-         willPlay = readline();
+/*
+         readline.question(yesNoExit, res => {
+            willPlay = res;
+            return willPlay;
+            readline.close();
+         });
+*/
 
-         //\\---Compare Input---//\\
-         if (willPlay == "Y" || willPlay == "y") {
-            gameState = 1;
-         } else if (willPlay == "N" || willPlay == "n") {
-            gameState = 2;
-         } else if (willPlay == "E" || willPlay == "e") {
-            gameState = 9;
-         } else {
-            console.log(invalidInput);
-         };
+            willPlay = prompt(willPlay);
+
+
+            //\\---Compare Input---//\\
+            if (willPlay == "Y" || willPlay == "y") {
+               gameState = 1;
+               console.log("Yes")
+            } else if (willPlay == "N" || willPlay == "n") {
+               gameState = 2;
+            } else if (willPlay == "E" || willPlay == "e") {
+               gameState = 9;
+            } else {
+               console.log(invalidInput);
+            };
+
       };
 
       while (gameState == 1) {
